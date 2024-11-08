@@ -1,0 +1,58 @@
+.list li:before {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 57 57'%3E%3Cpath fill='%23F30' d='M56.324 28.782c0 15.464-12.536 28-28 28s-28-12.536-28-28 12.536-28 28-28 28 12.536 28 28Z'/%3E%3Cpath fill='%23fff' fill-rule='evenodd' d='M47.08 19.943 22.87 43.956 9.593 31.044l4.183-4.301 9.051 8.803 20.026-19.863 4.225 4.26Z' clip-rule='evenodd'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    content: "";
+    height: 14px;
+    left: 0;
+    position: absolute;
+    top: 4px;
+    width: 14px;
+}
+
+@media (min-width: 768px) {
+    .list li:before {
+        height: 18px;
+        top: 3px;
+        width: 18px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .list li:before {
+        height: 22px;
+        top: 3px;
+        width: 22px;
+    }
+}
+
+.list li {
+    margin-bottom: 8px;
+    padding-left: 24px;
+    position: relative;
+    list-style-type: none;
+}
+
+@media (min-width: 768px) {
+    .list li {
+        padding-left: 28px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .list li {
+        margin-bottom: 14px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .list li {
+        margin-bottom: 16px;
+    }
+}
+
+@media (min-width: 1600px) {
+    .list li {
+        margin-bottom: 20px;
+        padding-left: 36px;
+    }
+}
