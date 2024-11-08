@@ -70,7 +70,7 @@ const RootLayout = ({ children }) => {
                 })} */}
 
                 {/* with optimization */}
-                {/* <Script
+                <Script
                     id="cdn-clouflare"
                     strategy="lazyOnload"
                     src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></Script>
@@ -107,10 +107,10 @@ const RootLayout = ({ children }) => {
                             {getThirdPartyScripts[data]}
                         </Script>
                     );
-                })} */}
+                })}
 
                 {/* with GoogleTagManager component */}
-                <Script
+                {/* <Script
                     id="cdn-clouflare"
                     strategy="lazyOnload"
                     src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></Script>
@@ -147,7 +147,7 @@ const RootLayout = ({ children }) => {
                             {getThirdPartyScripts[data]}
                         </Script>
                     );
-                })}
+                })} */}
 
                 <h1>Common Layout</h1>
 
