@@ -69,7 +69,7 @@ const RootLayout = ({ children }) => {
                     return <script key={data} id={data} dangerouslySetInnerHTML={{ __html: getThirdPartyScripts[data] }}></script>;
                 })} */}
 
-                {/* with optimization */}
+                {/* with optimization 
                 <Script
                     id="cdn-clouflare"
                     strategy="lazyOnload"
@@ -107,7 +107,7 @@ const RootLayout = ({ children }) => {
                             {getThirdPartyScripts[data]}
                         </Script>
                     );
-                })}
+                })} */}
 
                 {/* with GoogleTagManager component */}
                 {/* <Script
