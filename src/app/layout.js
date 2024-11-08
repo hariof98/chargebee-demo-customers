@@ -1,5 +1,4 @@
 /* this is the common layout for the entire application */
-"use client";
 
 import "./utils/helpers/css/globals.css";
 import Script from "next/script";
@@ -113,7 +112,7 @@ const RootLayout = ({ children }) => {
                 {/* with GoogleTagManager component */}
                 <Script
                     id="cdn-clouflare"
-                    strategy="lazyOnload"
+                    strategy="worker"
                     src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></Script>
 
                 <GoogleTagManager gtmId="GTM-TKDT3Z8">
@@ -144,7 +143,7 @@ const RootLayout = ({ children }) => {
 
                 {Object.keys(getThirdPartyScripts).map((data) => {
                     return (
-                        <Script key={data} id={data} strategy="lazyOnload">
+                        <Script key={data} id={data} strategy="worker">
                             {getThirdPartyScripts[data]}
                         </Script>
                     );
