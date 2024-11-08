@@ -1,5 +1,5 @@
-"use client";
 /* this is the common layout for the entire application */
+"use client";
 
 import "./utils/helpers/css/globals.css";
 import Script from "next/script";
@@ -69,6 +69,7 @@ const RootLayout = ({ children }) => {
                 {Object.keys(getThirdPartyScripts).map((data) => {
                     return <script key={data} id={data} dangerouslySetInnerHTML={{ __html: getThirdPartyScripts[data] }}></script>;
                 })} */}
+
                 {/* with optimization */}
                 {/* <Script
                     id="cdn-clouflare"
@@ -108,8 +109,12 @@ const RootLayout = ({ children }) => {
                         </Script>
                     );
                 })} */}
+
                 {/* with GoogleTagManager component */}
-                <Script id="cdn-clouflare" strategy="worker" src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></Script>
+                <Script
+                    id="cdn-clouflare"
+                    strategy="lazyOnload"
+                    src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></Script>
 
                 <GoogleTagManager gtmId="GTM-TKDT3Z8">
                     {`let cbEnvironmentGTM = document.domain;
@@ -137,10 +142,16 @@ const RootLayout = ({ children }) => {
                 }`}
                 </GoogleTagManager>
 
-                {Object.keys(getThirdPartyScripts).map((key) => (
-                    <Script key={key} id={key} strategy="worker" dangerouslySetInnerHTML={{ __html: getThirdPartyScripts[key] }} />
-                ))}
+                {Object.keys(getThirdPartyScripts).map((data) => {
+                    return (
+                        <Script key={data} id={data} strategy="lazyOnload">
+                            {getThirdPartyScripts[data]}
+                        </Script>
+                    );
+                })}
+
                 <h1>Common Layout</h1>
+
                 {children}
             </body>
         </html>
