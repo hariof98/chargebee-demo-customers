@@ -24,26 +24,15 @@ export const metadata = {
 //     };
 // };
 
-const loadGTM = () => {
-    const cbEnvironmentGTM = document.domain;
-    const gtmScript = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-TKDT3Z8');`;
-
-    if (cbEnvironmentGTM === "localhost") {
-        return `${gtmScript}&gtm_auth=3_0wnX23_A4RVlrHJTIqKg&gtm_preview=env-174&gtm_cookies_win=x`;
-    } else if (cbEnvironmentGTM === "www.devcb.in" || cbEnvironmentGTM === "www.devstory.in") {
-        return `${gtmScript}&gtm_auth=6MYUYYLvMg9Oo0hs70qQhA&gtm_preview=env-175&gtm_cookies_win=x`;
-    }
-    return gtmScript;
-};
-
 const RootLayout = ({ children }) => {
     const getThirdPartyScripts = useThirdPartyScripts();
 
-    return (
+    const layout = (
+        // we have the html declaration here because this is the root of the application
         <html lang="en">
             <body>
                 {/* Optimized GTM Script Loading */}
-                <Script id="gtm" strategy="lazyOnload" dangerouslySetInnerHTML={{ __html: loadGTM() }} />
+                {/* <Script id="gtm" strategy="lazyOnload" dangerouslySetInnerHTML={{ __html: loadGTM() }} /> */}
 
                 {/* External Library - Lazy Loading */}
                 <Script id="cdn-clouflare" strategy="lazyOnload" src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js" />
@@ -58,6 +47,8 @@ const RootLayout = ({ children }) => {
             </body>
         </html>
     );
+
+    return layout;
 };
 
 export default RootLayout;
