@@ -31,18 +31,131 @@ const RootLayout = ({ children }) => {
         // we have the html declaration here because this is the root of the application
         <html lang="en">
             <body>
-                {/* Optimized GTM Script Loading */}
+                {/* without optimization */}
+                {/* <script
+                    id="cdn-clouflare"
+                    strategy="lazyOnload"
+                    src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></script>
+
+                <script
+                    id="gtm"
+                    dangerouslySetInnerHTML={{
+                        __html: `let cbEnvironmentGTM = document.domain;
+                if(cbEnvironmentGTM === 'localhost'){
+                    // GTM Code added by CRO - Local
+                    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl+ '&gtm_auth=3_0wnX23_A4RVlrHJTIqKg&gtm_preview=env-174&gtm_cookies_win=x';f.parentNode.insertBefore(j,f);
+                    })(window,document,'script','dataLayer','GTM-TKDT3Z8');
+                }else if(cbEnvironmentGTM === 'www.devcb.in' || cbEnvironmentGTM === 'www.devstory.in'){
+                    // GTM Code added by CRO - DevCB
+                    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl+ '&gtm_auth=6MYUYYLvMg9Oo0hs70qQhA&gtm_preview=env-175&gtm_cookies_win=x';f.parentNode.insertBefore(j,f);
+                    })(window,document,'script','dataLayer','GTM-TKDT3Z8');
+                }else{
+                    // GTM Code added by CRO - Live
+                    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                    })(window,document,'script','dataLayer','GTM-TKDT3Z8');
+                }`,
+                    }}></script>
+
+                {Object.keys(getThirdPartyScripts).map((data) => {
+                    return <script key={data} id={data} dangerouslySetInnerHTML={{ __html: getThirdPartyScripts[data] }}></script>;
+                })} */}
+
+                {/* with optimization */}
+                {/* <Script
+                    id="cdn-clouflare"
+                    strategy="lazyOnload"
+                    src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></Script>
+
+                <Script id="gtm" strategy="lazyOnload">
+                    {`let cbEnvironmentGTM = document.domain;
+                if(cbEnvironmentGTM === 'localhost'){
+                    // GTM Code added by CRO - Local
+                    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl+ '&gtm_auth=3_0wnX23_A4RVlrHJTIqKg&gtm_preview=env-174&gtm_cookies_win=x';f.parentNode.insertBefore(j,f);
+                    })(window,document,'script','dataLayer','GTM-TKDT3Z8');
+                }else if(cbEnvironmentGTM === 'www.devcb.in' || cbEnvironmentGTM === 'www.devstory.in'){
+                    // GTM Code added by CRO - DevCB
+                    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl+ '&gtm_auth=6MYUYYLvMg9Oo0hs70qQhA&gtm_preview=env-175&gtm_cookies_win=x';f.parentNode.insertBefore(j,f);
+                    })(window,document,'script','dataLayer','GTM-TKDT3Z8');
+                }else{
+                    // GTM Code added by CRO - Live
+                    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                    })(window,document,'script','dataLayer','GTM-TKDT3Z8');
+                }`}
+                </Script>
+
+                {Object.keys(getThirdPartyScripts).map((data) => {
+                    return (
+                        <Script key={data} id={data} strategy="lazyOnload">
+                            {getThirdPartyScripts[data]}
+                        </Script>
+                    );
+                })} */}
+
+                {/* with GoogleTagManager component */}
+                <Script id="cdn-clouflare" strategy="worker" src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></Script>
+
+                <GoogleTagManager gtmId="GTM-TKDT3Z8">
+                    {`let cbEnvironmentGTM = document.domain;
+                if(cbEnvironmentGTM === 'localhost'){
+                    // GTM Code added by CRO - Local
+                    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl+ '&gtm_auth=3_0wnX23_A4RVlrHJTIqKg&gtm_preview=env-174&gtm_cookies_win=x';f.parentNode.insertBefore(j,f);
+                    })(window,document,'script','dataLayer','GTM-TKDT3Z8');
+                }else if(cbEnvironmentGTM === 'www.devcb.in' || cbEnvironmentGTM === 'www.devstory.in'){
+                    // GTM Code added by CRO - DevCB
+                    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl+ '&gtm_auth=6MYUYYLvMg9Oo0hs70qQhA&gtm_preview=env-175&gtm_cookies_win=x';f.parentNode.insertBefore(j,f);
+                    })(window,document,'script','dataLayer','GTM-TKDT3Z8');
+                }else{
+                    // GTM Code added by CRO - Live
+                    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                    })(window,document,'script','dataLayer','GTM-TKDT3Z8');
+                }`}
+                </GoogleTagManager>
+
+                {Object.keys(getThirdPartyScripts).map((data) => {
+                    return (
+                        <Script key={data} id={data} strategy="worker">
+                            {getThirdPartyScripts[data]}
+                        </Script>
+                    );
+                })}
+
                 {/* <Script id="gtm" strategy="lazyOnload" dangerouslySetInnerHTML={{ __html: loadGTM() }} /> */}
 
-                {/* External Library - Lazy Loading */}
-                <Script id="cdn-clouflare" strategy="lazyOnload" src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js" />
+                {/* <Script id="cdn-clouflare" strategy="worker" src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js" />
 
-                {/* Load Third-Party Scripts Dynamically */}
                 {Object.keys(getThirdPartyScripts).map((key) => (
-                    <Script key={key} id={key} strategy="lazyOnload" dangerouslySetInnerHTML={{ __html: getThirdPartyScripts[key] }} />
-                ))}
+                    <Script key={key} id={key} strategy="worker" dangerouslySetInnerHTML={{ __html: getThirdPartyScripts[key] }} />
+                ))} */}
 
                 <h1>Common Layout</h1>
+
                 {children}
             </body>
         </html>
