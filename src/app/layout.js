@@ -138,13 +138,13 @@ const RootLayout = ({ children }) => {
                 // }`}
                 // </GoogleTagManager>
 
-                {Object.keys(getThirdPartyScripts).map((data) => {
-                    return (
-                        <Script key={data} id={data} strategy="worker">
-                            {getThirdPartyScripts[data]}
-                        </Script>
-                    );
-                })}
+                // {Object.keys(getThirdPartyScripts).map((data) => {
+                //     return (
+                //         <Script key={data} id={data} strategy="worker">
+                //             {getThirdPartyScripts[data]}
+                //         </Script>
+                //     );
+                // })}
 
                 {/* <Script id="gtm" strategy="lazyOnload" dangerouslySetInnerHTML={{ __html: loadGTM() }} /> */}
 
