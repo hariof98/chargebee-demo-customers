@@ -1,3 +1,4 @@
+"use client";
 /* this is the common layout for the entire application */
 
 import "./utils/helpers/css/globals.css";
@@ -68,7 +69,6 @@ const RootLayout = ({ children }) => {
                 {Object.keys(getThirdPartyScripts).map((data) => {
                     return <script key={data} id={data} dangerouslySetInnerHTML={{ __html: getThirdPartyScripts[data] }}></script>;
                 })} */}
-
                 {/* with optimization */}
                 {/* <Script
                     id="cdn-clouflare"
@@ -108,11 +108,10 @@ const RootLayout = ({ children }) => {
                         </Script>
                     );
                 })} */}
-
                 {/* with GoogleTagManager component */}
                 <Script id="cdn-clouflare" strategy="worker" src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js"></Script>
 
-                {/* <GoogleTagManager gtmId="GTM-TKDT3Z8">
+                <GoogleTagManager gtmId="GTM-TKDT3Z8">
                     {`let cbEnvironmentGTM = document.domain;
                 if(cbEnvironmentGTM === 'localhost'){
                     // GTM Code added by CRO - Local
@@ -136,26 +135,12 @@ const RootLayout = ({ children }) => {
                     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
                     })(window,document,'script','dataLayer','GTM-TKDT3Z8');
                 }`}
-                </GoogleTagManager> */}
-
-                {/* {Object.keys(getThirdPartyScripts).map((data) => {
-                    return (
-                        <Script key={data} id={data} strategy="afterInteractive">
-                            {getThirdPartyScripts[data]}
-                        </Script>
-                    );
-                })} */}
-
-                {/* <Script id="gtm" strategy="lazyOnload" dangerouslySetInnerHTML={{ __html: loadGTM() }} /> */}
-
-                {/* <Script id="cdn-clouflare" strategy="worker" src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.min.js" />
+                </GoogleTagManager>
 
                 {Object.keys(getThirdPartyScripts).map((key) => (
                     <Script key={key} id={key} strategy="worker" dangerouslySetInnerHTML={{ __html: getThirdPartyScripts[key] }} />
-                ))} */}
-
+                ))}
                 <h1>Common Layout</h1>
-
                 {children}
             </body>
         </html>
